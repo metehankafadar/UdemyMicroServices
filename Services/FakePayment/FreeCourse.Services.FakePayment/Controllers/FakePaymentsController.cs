@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FreeCourse.Services.FakePayment.Models;
 
 namespace FreeCourse.Services.FakePayment.Controllers
 {
@@ -15,8 +16,10 @@ namespace FreeCourse.Services.FakePayment.Controllers
     {
 
         [HttpPost]
-        public IActionResult ReceivePayment()
+        public IActionResult ReceivePayment(PaymentDTO paymentDto)
         {
+
+            //paymentDTO ile ödeme işlemi gerçekleştir.
             return CreateActionResultInstance<NoContent>(Response<NoContent>.Success(200));
         }
 

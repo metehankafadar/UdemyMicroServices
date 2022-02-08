@@ -30,7 +30,7 @@ namespace FreeCourse.Services.PhotoStock.Controllers
                     await photo.CopyToAsync(stream, cancellationToken);
 
                 //http://www.photostock.api.com/photos/adsadas.jpg 
-                var returnPath = "photos/" + photo.FileName;
+                var returnPath = photo.FileName;
 
                 PhotoDTO photoDTO = new() { Url = returnPath };
                 //dd

@@ -46,10 +46,15 @@
                     </div>
                     <div class="mb-3">
                         <label asp-for="Feature.Duration" class="form-label"></label>
-                        <input asp-for="Feature.Duration" class="form-control"></input>
+                        <input asp-for="Feature.Duration" class="form-control">
                         <span class="text-danger" asp-validation-for="Feature.Duration"></span>
                     </div>
-                    @*Resim İnput gelecek*@
+                     <div class="mb-3">
+
+                        <label class="form-label" asp-for="PhotoFormFile"></label>
+                        <input type="file" asp-for="PhotoFormFile" class ="form-control" />
+
+                    </div>
                     <button type="submit" class="btn btn-primary">Kurs Güncelle</button>
                 </form>
 

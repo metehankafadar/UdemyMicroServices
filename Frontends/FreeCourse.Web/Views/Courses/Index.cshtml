@@ -11,12 +11,12 @@
                 <h5 class="card-title">Kurslar</h5>
 
                 <a asp-controller="Courses" asp-action="Create" class="btn btn-primary mb-3">Kurs oluştur</a> 
-                @if (Model != null)
+                @if (Model.Any())
                 {
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                
+                                <th>Foto</th>
                                 <th>Kurs isim</th>
                                 <th>Fiyat</th>
                                 <th>Süre</th>
@@ -29,7 +29,7 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    
+                                   <td> <img style="width:72px;height:60px;" class="img-thumbnail" src="@item.StockPictureUrl" /></td> 
                                     <td>@item.Name</td>
                                     <td>@item.Price</td>
                                     <td>@item.Feature.Duration</td>
