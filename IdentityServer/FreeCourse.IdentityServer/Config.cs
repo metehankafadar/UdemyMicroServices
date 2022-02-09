@@ -73,14 +73,22 @@ namespace FreeCourse.IdentityServer
                    AllowOfflineAccess= true,
                    ClientSecrets = {new Secret("secret".Sha256()) },
                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                   AllowedScopes = {"basket_fullpermission","discount_fullpermission","order_fullpermission","payment_fullpermission","gateway_fullpermission",
+                   AllowedScopes = {"basket_fullpermission","order_fullpermission","gateway_fullpermission",
                        IdentityServerConstants.StandardScopes.Email,IdentityServerConstants.StandardScopes.OpenId,
                        IdentityServerConstants.StandardScopes.Profile,IdentityServerConstants.StandardScopes.OfflineAccess ,IdentityServerConstants.LocalApi.ScopeName,"roles"}, //offline access reflesh token demek yoksa süresi bitince tekrar login ister.
                    AccessTokenLifetime = 1*60*60, // 1 saat
                    RefreshTokenExpiration = TokenExpiration.Absolute,
                    AbsoluteRefreshTokenLifetime = (int)(DateTime.Now.AddDays(60)- DateTime.Now).TotalSeconds, // 60 günlük
                    RefreshTokenUsage = TokenUsage.ReUse
-               } // 60 gün boyunca girmezse token ömrü dolar ancak bir kere bile girse reflesh token tekrar alacağı için ömrü uzayacak.
+               } ,// 60 gün boyunca girmezse token ömrü dolar ancak bir kere bile girse reflesh token tekrar alacağı için ömrü uzayacak.
+               new Client
+               {
+                   ClientName = "Token Exchange Client",
+                   ClientId = "TokenExchangeClient",
+                   ClientSecrets = {new Secret("secret".Sha256()) },
+                   AllowedGrantTypes =new [] {"urn:ietf:params:oauth:grant-type:token-exchange"},
+                   AllowedScopes = {"discount_fullpermission", "payment_fullpermission" ,IdentityServerConstants.StandardScopes.OpenId}
+               },
             };
     }
 }
