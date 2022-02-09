@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FreeCourse.Web.Models.Orders
 {
-    public class OrderCreateInput
+    public class  OrderCreateInput
     {
         public OrderCreateInput()
         {
