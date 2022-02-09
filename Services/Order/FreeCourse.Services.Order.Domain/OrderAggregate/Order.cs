@@ -22,10 +22,10 @@ namespace FreeCourse.Services.Order.Domain.OrderAggregate
         public string BuyerId { get; private set; }
 
         //Backing Fields => dışardan kimse orderitem'e item ekleyemesinler
-        private readonly List<OrderItem> _orderItem;
+        private readonly List<OrderItem> _orderItems;
 
         // dış dünyaya sadece okutmak amacıyla açıyoruz.
-        public IReadOnlyCollection<OrderItem> OrderItems => _orderItem;
+        public IReadOnlyCollection<OrderItem> OrderItems => _orderItems;
 
         public Order()
         {
@@ -33,7 +33,7 @@ namespace FreeCourse.Services.Order.Domain.OrderAggregate
         }
         public Order(string buyerId,Address address)
         {
-            _orderItem = new List<OrderItem>();
+            _orderItems = new List<OrderItem>();
             CreatedDate = DateTime.Now;
             BuyerId = buyerId;
             Address = address;
@@ -42,17 +42,17 @@ namespace FreeCourse.Services.Order.Domain.OrderAggregate
         public void AddOrderItem(string productId,string productName,decimal price,string pictureurl)
         {
 
-            var exitsProduct = _orderItem.Any(x => x.ProductId == productId);
+            var exitsProduct = _orderItems.Any(x => x.ProductId == productId);
 
             if (!exitsProduct)
             {
                 var newOrderItem = new OrderItem(productId, productName, pictureurl, price);
 
-                _orderItem.Add(newOrderItem);
+                _orderItems.Add(newOrderItem);
             }
 
         }
 
-        public decimal GetTotalPrice => _orderItem.Sum(x => x.Price);
+        public decimal GetTotalPrice => _orderItems.Sum(x => x.Price);
     }
 }

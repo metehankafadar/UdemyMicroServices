@@ -21,6 +21,7 @@ namespace FreeCourse.Services.Order.Infrastructure
         public DbSet<Domain.OrderAggregate.Order> Orders { get; set; }
         public DbSet<Domain.OrderAggregate.OrderItem> OrderItems { get; set; }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
